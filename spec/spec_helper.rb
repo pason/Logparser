@@ -1,4 +1,6 @@
 require_relative '../lib/server_log_files/parser'
+require_relative '../lib/server_log_files/analyzer'
+require_relative '../lib/server_log_files/support/formater'
 
 
 RSpec.configure do |config|

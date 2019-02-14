@@ -1,4 +1,6 @@
 require 'optparse'
+require_relative 'lib/server_log_files/parser'
+require_relative 'lib/server_log_files/analyzer'
 
 options = {}
 OptionParser.new do |opts|
@@ -13,3 +15,10 @@ OptionParser.new do |opts|
     exit
   end
 end.parse!(ARGV)
+
+
+parser = ServerLogFiles::Parser.new(path: options[:file])
+analyzer = ServerLogFiles::Analyzer.new(parser: parser).analyze
+
+puts analyzer.page_views
+puts analyzer.unique_views
